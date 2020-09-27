@@ -1,0 +1,26 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "for ttt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivyfung1/TTT-symbol-sdk-.git"
+  },
+  "keywords": [
+    "tyscript"
+  ],
+  "author": "ivy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivyfung1/TTT-symbol-sdk-/issues"
+  },
+  "homepage": "https://github.com/ivyfung1/TTT-symbol-sdk-#readme",
+  "dependencies": {
+    "rxjs": "^6.6.3",
+    "symbol-sdk": "^0.21.0"
+  }
+}
