@@ -11,12 +11,12 @@ import { Account,
 
 // Network information
 const networkType = NetworkType.TEST_NET;
-const nodeUrl = 'http://xym66940.allnodes.me:3000';
+const nodeUrl = 'http://api-01.ap-northeast-1.0.10.0.x.symboldev.network:3000';
 const repositoryFactory = new RepositoryFactoryHttp(nodeUrl);
 const transactionHttp = repositoryFactory.createTransactionRepository();
 
-// Cosginer info
-const privateKey = '1B47C3B875D63225E16DC3429DE5D62F8EA76724D8B2C3FE5A14A8A2C82EE17E';
+// Cosginer (user) info
+const privateKey = 'CCB2C677FE921BBBFB60EA60E270A2B6592B72C848F55F8885C39B95E97E00A6';
 const account = Account.createFromPrivateKey(privateKey, networkType);
 
 // Ready transaction for cosigning
@@ -26,7 +26,7 @@ const cosignAggregateBondedTransaction = (transaction: AggregateTransaction, acc
 };
 
 // replace with transaction hash to cosign
-const transactionHash = '3F6A14B888C241341ED3B6DD063342871C2712098CB08058130E1629227FD17E';
+const transactionHash = '3183CA7CF5AE80C21AE1D565C13D663B728C09EF0A48F11F16D573403B2A9845';
 
 const accountHttp = repositoryFactory.createAccountRepository();
         

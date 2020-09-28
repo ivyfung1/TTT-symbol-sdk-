@@ -43,7 +43,7 @@ const aliasSubnamespaceToMosaic = AliasTransaction.createForMosaic
     Deadline.create(),
     AliasAction.Link,
     namespaceRegistrationTransaction.namespaceId,
-    mosaicId,
+    new MosaicId(mosaicId),
     networkType);
 
 // Putting 2 transactions together

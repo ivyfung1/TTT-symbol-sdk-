@@ -16,26 +16,27 @@ import {
 // Network type 
 const networkType = NetworkType.TEST_NET;
 
-// Alice account
-const alicePrivateKey = '185EFD9F86BDB452153CE46E1EBDBEBEF44DB12F7079DF0634564F08C630C166';
-const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, networkType);// address = TDXNDD4FW7E5JZH3747VUIMUX2FPFB7LRVEKFCI
-// Seller account
-const privateKey = '1B47C3B875D63225E16DC3429DE5D62F8EA76724D8B2C3FE5A14A8A2C82EE17E';
-const sellerAccount = Account.createFromPrivateKey(privateKey, networkType); // address = TA7MXUV4O5UBRR6PTHCJPX3M6HVOBOOQ2J4FTYY
+// abc account
+const alicePrivateKey = '14523D4ACB53FB9C108C196593C0730C852EC9A3CE4D4E292485B61ED1A860CF';
+const aliceAccount = Account.createFromPrivateKey(alicePrivateKey, networkType);
 
-// Mosaic to be transfer - ticket
-const ticketMosaicId = new MosaicId('53F970DF639EE211');
-const ticketDivisibility = 0;
+// user account
+const privateKey = 'CCB2C677FE921BBBFB60EA60E270A2B6592B72C848F55F8885C39B95E97E00A6';
+const sellerAccount = Account.createFromPrivateKey(privateKey, networkType); 
+
+// Mosaic to be transfer 
+const ticketMosaicId = new MosaicId('62B26D7C9A289AF9');
+const ticketDivisibility = 6;
 
 // Native currency
-const networkCurrencyMosaicId = new MosaicId('5E62990DCAC5BE8A');
+const networkCurrencyMosaicId = new MosaicId('5B66E76BECAD0860');
 const networkCurrencyDivisibility = 6;
 
 const aliceToTicketDistributorTx = TransferTransaction.create(
     Deadline.create(),
     sellerAccount.address,
     [new Mosaic (networkCurrencyMosaicId,
-        UInt64.fromUint(100 * Math.pow(10, networkCurrencyDivisibility)))],
+        UInt64.fromUint(10 * Math.pow(10, networkCurrencyDivisibility)))],
     PlainMessage.create('send 100 symbol.xym to distributor'),
     networkType);
 
@@ -43,7 +44,7 @@ const ticketDistributorToAliceTx = TransferTransaction.create(
     Deadline.create(),
     aliceAccount.address,
     [new Mosaic(ticketMosaicId,
-        UInt64.fromUint(1 * Math.pow(10, ticketDivisibility)))],
+        UInt64.fromUint(10 * Math.pow(10, ticketDivisibility)))],
     PlainMessage.create('send 1 museum ticket to customer'),
     networkType);
 
@@ -57,7 +58,7 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     UInt64.fromUint(2000000));
 
 // Signing transaction
-const networkGenerationHash = '1DFB2FAA9E7F054168B0C5FCB84F4DEB62CC2B4D317D861F3168D161F54EA78B';
+const networkGenerationHash = '6C1B92391CCB41C96478471C2634C111D9E989DECD66130C0430B5B8D20117CD';
 const signedTransaction = aliceAccount.sign(aggregateTransaction, networkGenerationHash);
 console.log('Aggregate Transaction Hash:', signedTransaction.hash);
 
@@ -76,7 +77,7 @@ const signedHashLockTransaction = aliceAccount.sign(hashLockTransaction, network
 console.log(hashLockTransaction.hash)
 
 // Announcing transaction and and error tracking
-const nodeUrl = 'http://xym66940.allnodes.me:3000';
+const nodeUrl = 'http://api-01.ap-northeast-1.0.10.0.x.symboldev.network:3000';
 const repositoryFactory = new RepositoryFactoryHttp(nodeUrl);
 const listener = repositoryFactory.createListener(); 
 const receiptHttp = repositoryFactory.createReceiptRepository(); 
