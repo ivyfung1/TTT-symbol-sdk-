@@ -18,11 +18,11 @@ import {
 const networkType = NetworkType.TEST_NET;
 
 // Assign key and value
-const key = KeyGenerator.generateUInt64Key('CERT');
-const value = '123456';
+const key = KeyGenerator.generateUInt64Key('Membership');
+const value = 'GOLD';
 
 // Assingee account
-const assingeePublicKey = '7EA792DBF275E691FCD4B628C61D5D193CCB75B0BCD40513962C10B3C5C255CE'; // Alice's account 
+const assingeePublicKey = '58EA0EC771E4D32A6C47677B0A63FAD2D01430549D3B7790D9C8E3203DC47BC1'; 
 const assigneePublicAccount = PublicAccount.createFromPublicKey(assingeePublicKey, networkType);
 
 const accountMetadataTransaction = AccountMetadataTransaction.create(
@@ -46,12 +46,12 @@ const aggregateTransaction = AggregateTransaction.createBonded(
     UInt64.fromUint(2000000));
 
 // Signing transaction
-const networkGenerationHash = '1DFB2FAA9E7F054168B0C5FCB84F4DEB62CC2B4D317D861F3168D161F54EA78B';
+const networkGenerationHash = '6C1B92391CCB41C96478471C2634C111D9E989DECD66130C0430B5B8D20117CD';
 const signedTransaction = assignorAccount.sign(aggregateTransaction, networkGenerationHash);
 console.log(signedTransaction.hash);
 
 // Native currency
-const networkCurrencyMosaicId = new MosaicId('5E62990DCAC5BE8A');
+const networkCurrencyMosaicId = new MosaicId('5B66E76BECAD0860');
 const networkCurrencyDivisibility = 6;
 
 const hashLockTransaction = HashLockTransaction.create(
