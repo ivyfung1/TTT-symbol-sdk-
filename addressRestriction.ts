@@ -24,13 +24,13 @@ const userAddress = Address.createFromRawAddress(userRawAddress);
 
 // Restriction key for reward
 const key = 'key';
-console.log('key', key.toString);
+console.log('key', key.toLowerCase);
 
 const userMosaicAddressRestrictionTransaction = MosaicAddressRestrictionTransaction
     .create(
         Deadline.create(),
         mosaicId, // mosaicId
-        new KeyGenerator(key), // restrictionKey
+        KeyGenerator.generateUInt64Key('key'), // restrictionKey
         userAddress, // address
         UInt64.fromUint(1), // newRestrictionValue
         networkType);
